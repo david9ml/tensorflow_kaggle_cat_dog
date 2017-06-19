@@ -49,9 +49,10 @@ def plot_confusion_matrix(cls_pred):
 with tf.Session() as session:
    #x = tf.Variable(-1.0, validate_shape=False, name='x')
    #y = tf.Variable(-1.0, validate_shape=False, name='y')
+   #saver = tf.train.Saver()
    #saver = tf.train.import_meta_graph('./checkpoint/model.ckpt-9788.meta', clear_devices=True)
    #saver.restore(session,tf.train.latest_checkpoint('./checkpoint'))
-   saver = tf.train.Saver()
+   saver = tf.train.import_meta_graph('./backup.chk.meta', clear_devices=True)
    saver.restore(session, './backup.chk')
    graph = tf.get_default_graph()
    #for n in graph.as_graph_def().node:
