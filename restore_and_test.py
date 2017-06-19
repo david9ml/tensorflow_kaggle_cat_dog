@@ -23,7 +23,7 @@ num_channels = 3
 
 img_size_flat = img_size * img_size * num_channels
 
-train_path = '/root/intelcaffe/data/kaggle/cat_dog/test'
+train_path = '/root/tensorflow_kaggle_cat_dog/cat_dog/test'
 
 data = dataset.read_train_sets(train_path, img_size, classes, validation_size=validation_size)
 
@@ -49,10 +49,10 @@ def plot_confusion_matrix(cls_pred):
 with tf.Session() as session:
    #x = tf.Variable(-1.0, validate_shape=False, name='x')
    #y = tf.Variable(-1.0, validate_shape=False, name='y')
-   #saver = tf.train.Saver()
-   #saver.restore(session, './backup.chk')
-   saver = tf.train.import_meta_graph('backup.chk.meta')
-   saver.restore(session,tf.train.latest_checkpoint('./'))
+   #saver = tf.train.import_meta_graph('./checkpoint/model.ckpt-9788.meta', clear_devices=True)
+   #saver.restore(session,tf.train.latest_checkpoint('./checkpoint'))
+   saver = tf.train.Saver()
+   saver.restore(session, './backup.chk')
    graph = tf.get_default_graph()
    #for n in graph.as_graph_def().node:
    #    print n.name
